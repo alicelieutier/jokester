@@ -1,0 +1,45 @@
+/* create the flipping style */
+
+.FlipCard {
+  position: relative;
+  width: 60vw;
+  height: 60vh;
+  perspective: 1800px;
+  margin: auto;
+}
+
+.FlipCard-rotator {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.FlipCard-rotator.flipped {
+  transform: rotateY(180deg);
+}
+
+.FlipCard-front, .FlipCard-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: white; /* styling */
+  
+  border-radius: 2vw;
+  overflow: hidden;
+
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+
+  box-shadow: 0px 5px 3px -3px rgb(0 0 0 / 20%), 0px 2px 2px 0px rgb(0 0 0 / 14%), 0px 1px 5px 0px rgb(0 0 0 / 12%);
+}
+
+.FlipCard-back {
+  background-color: red; /* styling */
+  -webkit-transform: rotateY(180deg);
+  -moz-transform: rotateY(180deg);
+  -o-transform: rotateY(180deg);
+  -ms-transform: rotateY(180deg);
+  transform: rotateY(180deg);
+}

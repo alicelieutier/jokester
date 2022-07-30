@@ -1,23 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import FlipCard from './components/FlipCard';
+import TextCard from './components/TextCard';
+import { useEffect, useState } from 'react';
 
 function App() {
+
+  const [showBack, setShowBack] = useState(false);
+  const [joke, setJoke] = useState({ setup: '', delivery: '' });
+
+  useEffect(() => {
+    fetch('https://v2.jokeapi.dev/joke/Any?safe-mode')
+      .then(res => res.json())
+      .then(data => setJoke(data))
+      .catch(err => console.err(err));
+      console.log("hi")
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <FlipCard 
+        front={<TextCard text={joke.setup} />}
+        back={<TextCard text={joke.delivery} />}
+        showBack={showBack}
+        flip={() => {
+          console.log('flip');
+          setShowBack(!showBack)
+        }}
+      />
     </div>
   );
 }
