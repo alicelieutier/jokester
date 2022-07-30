@@ -1,6 +1,6 @@
 # Jokester
 
-Tell me a joke!
+[Tell me a joke!](https://alicelieutier.github.io/jokester/)
 
 --
 
